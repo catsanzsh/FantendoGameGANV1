@@ -1,4 +1,4 @@
-## this converts fantendo wiki to a game
+ ## this converts fantendo wiki to a game
 import gradio
 
 
@@ -32,7 +32,6 @@ def Client_Program():
     import os
     import sys
     gradio.client = "800x800"
-    gradio.launch(Game_Generator, "Game Generator")
     gradio.clientsize= "800x800"
     gradio.launch(Game_Generator, "Game Generator")
     gradio.title= "Game Generator"
@@ -58,8 +57,38 @@ def Game_Player():
     gradio.clientsize= "800x800"
     gradio.launch(Game_Generator, "Game Generator")
     gradio.title= "Game Generator"
-
-    gradio.game.gameinfo=input("Please input the game you would like to generate")
+## write the game engine using pygame
+def Game_Engine():
+    import pygame
+    import os
+    import sys
+    pygame.init()
+    pygame.display.set_caption("Game Engine")
+    screen = pygame.display.set_mode((800,800))
+    pygame.display.flip()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+                    if event.key == pygame.K_UP:
+                        print("up")
+                    if event.key == pygame.K_DOWN:
+                        print("down")
+                    if event.key == pygame.K_LEFT:
+                        print("left")
+                    if event.key == pygame.K_RIGHT:
+                        print("right")
+                    if event.key == pygame.K_SPACE:
+                        print("space")
+                    if event.key == pygame.K_RETURN:
+                        print("enter")
 print(Game_Generator)
+print(Game_Engine)
 print(Game_Player)
+
 print(Client_Program)
